@@ -19,9 +19,9 @@ function imFiltered = FMFA(imNoisy)
       val3g = median([imNoisy(i-1,j,2),imNoisy(i,j,2),imNoisy(i+1,j,2)]);
       val3b = median([imNoisy(i-1,j,3),imNoisy(i,j,3),imNoisy(i+1,j,3)]);
       
-      imFiltered(:,:,1) = median([val1r,val2r,val3r]);
-      imFiltered(:,:,2) = median([val1g,val2g,val3g]);
-      imFiltered(:,:,3) = median([val1b,val2b,val3b]);
+      imFiltered(i,j,1) = median([val1r,val2r,val3r]);
+      imFiltered(i,j,2) = median([val1g,val2g,val3g]);
+      imFiltered(i,j,3) = median([val1b,val2b,val3b]);
       
       val1r = val2r;
       val2r = val3r;
@@ -33,6 +33,44 @@ function imFiltered = FMFA(imNoisy)
       val2b = val3b;
     endfor
   endfor
+  
+  %esquinas
+  imFiltered(1,1,1)= median([imNoisy(1,1,1), imNoisy(1,2,1), imNoisy(2,1,1), imNoisy(2,2,1)]);
+  imFiltered(1,1,2)= median([imNoisy(1,1,2), imNoisy(1,2,2), imNoisy(2,1,2), imNoisy(2,2,2)]);
+  imFiltered(1,1,2)= median([imNoisy(1,1,3), imNoisy(1,2,3), imNoisy(2,1,3), imNoisy(2,2,3)]);
+                             
+  imFiltered(1,w,1)= median([imNoisy(1,w,1), imNoisy(1,w-1,1), imNoisy(2,w,1), imNoisy(2,w-1,1)]);
+  imFiltered(1,w,2)= median([imNoisy(1,w,2), imNoisy(1,w-1,2), imNoisy(2,w,2), imNoisy(2,w-1,2)]);
+  imFiltered(1,w,3)= median([imNoisy(1,w,3), imNoisy(1,w-1,3), imNoisy(2,w,3), imNoisy(2,w-1,3)]);
+  
+  imFiltered(h,1,1)= median([imNoisy(h,1,1), imNoisy(h-1,1,1), imNoisy(h-1,2,1), imNoisy(h,2,1)]);
+  imFiltered(h,1,2)= median([imNoisy(h,1,2), imNoisy(h-1,1,2), imNoisy(h-1,2,2), imNoisy(h,2,2)]);
+  imFiltered(h,1,3)= median([imNoisy(h,1,3), imNoisy(h-1,1,3), imNoisy(h-1,2,3), imNoisy(h,2,3)]);
+                             
+  imFiltered(h,w,1)= median([imNoisy(h,w,1), imNoisy(h-1,w,1), imNoisy(h-1,w-1,1), imNoisy(h,w-1,1)]);
+  imFiltered(h,w,2)= median([imNoisy(h,w,2), imNoisy(h-1,w,2), imNoisy(h-1,w-1,2), imNoisy(h,w-1,2)]);
+  imFiltered(h,w,3)= median([imNoisy(h,w,3), imNoisy(h-1,w,3), imNoisy(h-1,w-1,3), imNoisy(h,w-1,3)]);
+  %bordes                          
+  for l = 2:w-1
+    imFiltered(1,l,1)= median([imNoisy(1,l,1),imNoisy(1,l-1,1),imNoisy(1,l+1,1), imNoisy(2,l,1),imNoisy(2,l-1,1),imNoisy(2,l+1,1)]);
+    imFiltered(1,l,2)= median([imNoisy(1,l,2),imNoisy(1,l-1,2),imNoisy(1,l+1,2), imNoisy(2,l,2),imNoisy(2,l-1,2),imNoisy(2,l+1,2)]);
+    imFiltered(1,l,3)= median([imNoisy(1,l,3),imNoisy(1,l-1,3),imNoisy(1,l+1,3), imNoisy(2,l,3),imNoisy(2,l-1,3),imNoisy(2,l+1,3)]);
+           
+    imFiltered(h,l,1)= median([imNoisy(h,l,1), imNoisy(h,l-1,1), imNoisy(h,l+1,1), imNoisy(h-1,l,1), imNoisy(h-1,l-1,1), imNoisy(h-1,l+1,1)]);
+    imFiltered(h,l,2)= median([imNoisy(h,l,2), imNoisy(h,l-1,2), imNoisy(h,l+1,2), imNoisy(h-1,l,2), imNoisy(h-1,l-1,2), imNoisy(h-1,l+1,2)]);
+    imFiltered(h,l,3)= median([imNoisy(h,l,3), imNoisy(h,l-1,3), imNoisy(h,l+1,3), imNoisy(h-1,l,3), imNoisy(h-1,l-1,3), imNoisy(h-1,l+1,3)]);                          
+  endfor
+  
+  for m = 2:h-1
+    imFiltered(m,1,1)= median([imNoisy(m,1,1), imNoisy(m-1,1,1), imNoisy(m+1,1,1), imNoisy(m,2,1), imNoisy(m-1,2,1), imNoisy(m+1,2,1)]);
+    imFiltered(m,1,2)= median([imNoisy(m,1,2), imNoisy(m-1,1,2), imNoisy(m+1,1,2), imNoisy(m,2,2), imNoisy(m-1,2,2), imNoisy(m+1,2,2)]);
+    imFiltered(m,1,3)= median([imNoisy(m,1,3), imNoisy(m-1,1,3), imNoisy(m+1,1,3), imNoisy(m,2,3), imNoisy(m-1,2,3), imNoisy(m+1,2,3)]);
+                               
+    imFiltered(m,w,1)= median([imNoisy(m,w,1), imNoisy(m-1,w,1), imNoisy(m+1,w,1), imNoisy(m,w-1,1), imNoisy(m-1,w-1,1), imNoisy(m+1,w-1,1)]);
+    imFiltered(m,w,2)= median([imNoisy(m,1,2), imNoisy(m-1,1,2), imNoisy(m+1,1,2), imNoisy(m,w-1,2), imNoisy(m-1,w-1,2), imNoisy(m+1,w-1,2)]);
+    imFiltered(m,w,3)= median([imNoisy(m,w,3), imNoisy(m-1,w,3), imNoisy(m+1,w,3), imNoisy(m,w-1,3), imNoisy(m-1,w-1,3), imNoisy(m+1,w-1,3)]);                         
+  endfor
+  
 endfunction
 
 %Abrir video con ruido
