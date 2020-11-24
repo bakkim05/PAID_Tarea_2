@@ -19,15 +19,13 @@ endfunction
 
 a = 0.073235;
 b = 0.176765;
-%a = 0.125;
-%b = 0.125;
 M =  [a b a; 
       b 0 b; 
       a b a];
 bounds = B;
 A = im2double(A);
 
-its=20;
+its=50;
 %A = f_inp(A, M, bounds, its); 
 A(:,:,1) = f_inp(A(:,:,1), M, bounds, its);
 A(:,:,2) = f_inp(A(:,:,2), M, bounds, its);
