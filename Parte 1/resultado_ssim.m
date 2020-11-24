@@ -1,4 +1,5 @@
 pkg load image
+pkg load video
 
 %Load videos
 videoOriginal = VideoReader("videos/video_sin_ruido.mp4");
@@ -17,13 +18,13 @@ for i = 1 : frameOriginal
      readerAlg1 = readFrame(videoAlg1);
      readerAlg2 = readFrame(videoAlg2);
      
-     similitud_alg1(i,1) = ssim(readerAlg1(:,:,1,i),readerOriginal(:,:,1,i));
-     similitud_alg1(i,2) = ssim(readerAlg1(:,:,2,i),readerOriginal(:,:,1,i));
-     similitud_alg1(i,3) = ssim(readerAlg1(:,:,3,i),readerOriginal(:,:,1,i));
+     similitud_alg1(i,1) = ssim(readerAlg1(:,:,1),readerOriginal(:,:,1));
+     similitud_alg1(i,2) = ssim(readerAlg1(:,:,2),readerOriginal(:,:,2));
+     similitud_alg1(i,3) = ssim(readerAlg1(:,:,3),readerOriginal(:,:,3));
      
-     similitud_alg2(i,1) = ssim(readerAlg2(:,:,1,i),readerOriginal(:,:,1,i));
-     similitud_alg2(i,2) = ssim(readerAlg2(:,:,2,i),readerOriginal(:,:,1,i));
-     similitud_alg2(i,3) = ssim(readerAlg2(:,:,3,i),readerOriginal(:,:,1,i));
+     similitud_alg2(i,1) = ssim(readerAlg2(:,:,1),readerOriginal(:,:,1));
+     similitud_alg2(i,2) = ssim(readerAlg2(:,:,2),readerOriginal(:,:,2));
+     similitud_alg2(i,3) = ssim(readerAlg2(:,:,3),readerOriginal(:,:,3));
 end
 
 resultado_ssim_alg1 = mean(mean(similitud_alg1))

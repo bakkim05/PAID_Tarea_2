@@ -37,7 +37,7 @@ function imFiltered = FMFA(imNoisy)
   %esquinas
   imFiltered(1,1,1)= median([imNoisy(1,1,1), imNoisy(1,2,1), imNoisy(2,1,1), imNoisy(2,2,1)]);
   imFiltered(1,1,2)= median([imNoisy(1,1,2), imNoisy(1,2,2), imNoisy(2,1,2), imNoisy(2,2,2)]);
-  imFiltered(1,1,2)= median([imNoisy(1,1,3), imNoisy(1,2,3), imNoisy(2,1,3), imNoisy(2,2,3)]);
+  imFiltered(1,1,3)= median([imNoisy(1,1,3), imNoisy(1,2,3), imNoisy(2,1,3), imNoisy(2,2,3)]);
                              
   imFiltered(1,w,1)= median([imNoisy(1,w,1), imNoisy(1,w-1,1), imNoisy(2,w,1), imNoisy(2,w-1,1)]);
   imFiltered(1,w,2)= median([imNoisy(1,w,2), imNoisy(1,w-1,2), imNoisy(2,w,2), imNoisy(2,w-1,2)]);
@@ -67,7 +67,7 @@ function imFiltered = FMFA(imNoisy)
     imFiltered(m,1,3)= median([imNoisy(m,1,3), imNoisy(m-1,1,3), imNoisy(m+1,1,3), imNoisy(m,2,3), imNoisy(m-1,2,3), imNoisy(m+1,2,3)]);
                                
     imFiltered(m,w,1)= median([imNoisy(m,w,1), imNoisy(m-1,w,1), imNoisy(m+1,w,1), imNoisy(m,w-1,1), imNoisy(m-1,w-1,1), imNoisy(m+1,w-1,1)]);
-    imFiltered(m,w,2)= median([imNoisy(m,1,2), imNoisy(m-1,1,2), imNoisy(m+1,1,2), imNoisy(m,w-1,2), imNoisy(m-1,w-1,2), imNoisy(m+1,w-1,2)]);
+    imFiltered(m,w,2)= median([imNoisy(m,w,2), imNoisy(m-1,w,2), imNoisy(m+1,w,2), imNoisy(m,w-1,2), imNoisy(m-1,w-1,2), imNoisy(m+1,w-1,2)]);
     imFiltered(m,w,3)= median([imNoisy(m,w,3), imNoisy(m-1,w,3), imNoisy(m+1,w,3), imNoisy(m,w-1,3), imNoisy(m-1,w-1,3), imNoisy(m+1,w-1,3)]);                         
   endfor
   

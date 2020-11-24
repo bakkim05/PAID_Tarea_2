@@ -1,4 +1,4 @@
-function [mssim, ssim_map] = ssim(img1_filename, img2_filename, K, window, L)
+function [mssim, ssim_map] = ssim(img1, img2, K, window, L)
 
 % ========================================================================
 % SSIM Index with automatic downsampling, Version 1.0
@@ -73,11 +73,7 @@ function [mssim, ssim_map] = ssim(img1_filename, img2_filename, K, window, L)
 %   mssim                        %Gives the mssim value
 %   imshow(max(0, ssim_map).^4)  %Shows the SSIM index map
 %========================================================================
-
-
-img1 = imread(img1_filename);
-img2 = imread(img2_filename);
-
+pkg load image
 
 if (nargin < 2 || nargin > 5)
    mssim = -Inf;
