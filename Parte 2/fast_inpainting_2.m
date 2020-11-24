@@ -3,8 +3,6 @@ clc; clear; close all;
 A = imread('images/orig2.jpg');
 B = imread('images/objeto2.jpg');
 B = B <= 50;
-figure
-imshow(B)
 %disp(B(1:50, 1:50));
 %Algoritmo de recuperación
 
@@ -29,11 +27,10 @@ M =  [a b a;
 bounds = B;
 A = im2double(A);
 
-its=255;
+its=20;
 %A = f_inp(A, M, bounds, its); 
 A(:,:,1) = f_inp(A(:,:,1), M, bounds, its);
 A(:,:,2) = f_inp(A(:,:,2), M, bounds, its);
 A(:,:,3) = f_inp(A(:,:,3), M, bounds, its);
 
-figure
-  imshow(im2uint8(A));
+imshow(im2uint8(A));
