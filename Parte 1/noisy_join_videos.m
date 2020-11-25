@@ -13,7 +13,7 @@ frameDani = videoDani.NumberOfFrames;
 frameDago = videoDago.NumberOfFrames;
 
 %Create template for output video
-frameTotal = frameJung + frameDani + frameDago;
+frameTotal = frameJung + frameDani + frameDago
 videoHeight = videoJung.Height;
 videoWidth = videoJung.Width;
 output = uint8(zeros(videoHeight, videoWidth, 3, frameTotal));
@@ -22,19 +22,19 @@ output = uint8(zeros(videoHeight, videoWidth, 3, frameTotal));
 %%Video Jung
 for i = 1 : frameJung
      frame = readFrame(videoJung);
-     output(:,:,:,i) = imnoise(frame(:,:,:),"salt & pepper", 0.2);
+     output(:,:,:,i) = imnoise(frame(:,:,:),"salt & pepper", 0.01);
 end
 
 %%Video Daniel
 for i = frameJung+1 : frameJung + frameDani
      frame = readFrame(videoDani);
-     output(:,:,:,i) = imnoise(frame(:,:,:),"salt & pepper", 0.2);
+     output(:,:,:,i) = imnoise(frame(:,:,:),"salt & pepper", 0.01);
 end
 
 %%Video Dago
 for i = frameJung + frameDani + 1  : frameTotal
      frame = readFrame(videoDago);
-     output(:,:,:,i) = imnoise(frame(:,:,:),"salt & pepper", 0.2);
+     output(:,:,:,i) = imnoise(frame(:,:,:),"salt & pepper", 0.01);
 end
 
 %Escribir el video en el archivo

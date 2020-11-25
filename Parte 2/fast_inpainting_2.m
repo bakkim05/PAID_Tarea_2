@@ -1,4 +1,3 @@
-pkg load image;
 clc; clear; close all;
 A = imread('images/orig.jpg');
 %B = imread('images/objeto.jpg')(1:960, 1:1280,:);
@@ -6,7 +5,7 @@ B = imread('images/objeto4.jpg');
 B = B <= 50;
 %B = B >= 50;
 %disp(B(1:50, 1:50));
-%Algoritmo de recuperación
+%Algoritmo de recuperaciï¿½n
 subplot(2,2,1)
 imshow(A)
 title('Imagen original')
