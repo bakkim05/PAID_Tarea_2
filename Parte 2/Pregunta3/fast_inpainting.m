@@ -8,14 +8,11 @@ title('Imagen a restaurar');
 %Algoritmo de recuperación
 
 function I = f_inp(A, M, bounds, its)
-  if(its == 0)
-    I = A;
-    return
-  endif
-  C = conv2(A, M, 'same');
-  A(bounds) = C(bounds);
-  its = its -1; 
-  I = f_inp(A, M, bounds, its);
+  for i = 1:its
+    C = conv2(A, M, 'same');
+    A(bounds) = C(bounds);
+  endfor
+  I = A;
 endfunction 
 
 a = 0.073235;

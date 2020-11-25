@@ -1,4 +1,4 @@
-clc; clear;
+clc; clear; close all;
 A = zeros(4,4,3);
 % Crear la matriz A del enunciado
 A(:,:,1) = [5 10 15 20;
@@ -16,4 +16,3 @@ A(:,:,3) = [0 0 0 0;
             
 % Calcular B que cumpla las condiciones
 B = A(:,:,1) > 5 & A(:,:,2) < 5 & A(:,:,3) >= 10;
-disp(B)
