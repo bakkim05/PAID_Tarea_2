@@ -1,5 +1,6 @@
-pkg load image;
 clc; clear; close all;
+pkg load image;
+
 A = imread('images/orig2.jpg');
 B = imread('images/objeto2.jpg');
 B = B <= 50;

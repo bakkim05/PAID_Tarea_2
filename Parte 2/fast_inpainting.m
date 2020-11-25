@@ -1,5 +1,6 @@
-pkg load image;
 clc; clear; close all;
+pkg load image;
+
 A = imread('images/restaurar.jpg');
 B = imread('images/marca.jpg');
 subplot(2,2,1);
