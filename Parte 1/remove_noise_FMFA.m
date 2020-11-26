@@ -14,14 +14,14 @@ function imFiltered = FMFA(imNoisy)
     val1b = median([imNoisy(i-1,1,3),imNoisy(i,1,3),imNoisy(i+1,1,3)]);
     val2b = median([imNoisy(i-1,2,3),imNoisy(i,2,3),imNoisy(i+1,2,3)]);
 
-    for j=3:(w-1)
+    for j=3:(w)
       val3r = median([imNoisy(i-1,j,1),imNoisy(i,j,1),imNoisy(i+1,j,1)]);
       val3g = median([imNoisy(i-1,j,2),imNoisy(i,j,2),imNoisy(i+1,j,2)]);
       val3b = median([imNoisy(i-1,j,3),imNoisy(i,j,3),imNoisy(i+1,j,3)]);
       
-      imFiltered(i,j,1) = median([val1r,val2r,val3r]);
-      imFiltered(i,j,2) = median([val1g,val2g,val3g]);
-      imFiltered(i,j,3) = median([val1b,val2b,val3b]);
+      imFiltered(i,j-1,1) = median([val1r,val2r,val3r]);
+      imFiltered(i,j-1,2) = median([val1g,val2g,val3g]);
+      imFiltered(i,j-1,3) = median([val1b,val2b,val3b]);
       
       val1r = val2r;
       val2r = val3r;
